@@ -1,12 +1,22 @@
-import React, { StrictMode } from "react";
-import { createRoot } from "react-dom/client"; // Importation correcte
+import React from "react";
+import ReactDOM from "react-dom";
 import App from "./App";
 import "./style/index.css";
 
-const container = document.getElementById("root");
-const root = createRoot(container); // Utilisation correcte de createRoot
-root.render(
-  <StrictMode>
+//REDUX
+
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./Reducers/index.js";
+
+const store = configureStore({
+  reducer: rootReducer,
+  devTools: true,
+});
+
+ReactDOM.render(
+  <Provider store={store}>
     <App />
-  </StrictMode>
+  </Provider>,
+  document.getElementById("root")
 );
