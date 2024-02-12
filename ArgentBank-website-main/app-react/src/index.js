@@ -1,12 +1,12 @@
-import React from "react";
-import { createRoot } from "react-dom/client"; // Importation modifiée
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client"; // Importation correcte
 import App from "./App";
 import "./style/index.css";
 
-const root = document.getElementById("root");
-
-// Créez la racine en utilisant la nouvelle API
-const reactRoot = createRoot(root);
-
-// Rendre votre application
-reactRoot.render(<App />);
+const container = document.getElementById("root");
+const root = createRoot(container); // Utilisation correcte de createRoot
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
