@@ -2,18 +2,20 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./Views/Home";
+import Login from "./Views/Login";
 
-// import Footer from "./components/Footer/Footer";
-// import Header from "./components/Header/Header";
+import Footer from "./Components/Footer/Footer";
+import Header from "./Components/Header/Header";
 
 const App = () => {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 };
