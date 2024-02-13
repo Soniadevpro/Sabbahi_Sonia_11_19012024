@@ -1,10 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client"; // Importez createRoot
 import App from "./App";
 import "./style/index.css";
 
-//REDUX
-
+// REDUX
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./Reducers/index.js";
@@ -14,9 +13,10 @@ const store = configureStore({
   devTools: true,
 });
 
-ReactDOM.render(
+// Utilisation de createRoot pour rendre votre application
+const root = createRoot(document.getElementById("root"));
+root.render(
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById("root")
+  </Provider>
 );
