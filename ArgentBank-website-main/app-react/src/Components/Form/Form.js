@@ -1,32 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Form/Form.css";
 
 const Form = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Traitement des données du formulaire
+    console.log("Submitted:", { username, password, rememberMe });
+  };
+
   return (
     <div>
       <main className="main bg-dark">
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Sign In</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
               <label htmlFor="username">Username</label>
-              <input type="text" id="username" />
+              <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" />
+              <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className="input-remember">
-              <input type="checkbox" id="remember-me" />
+              <input type="checkbox" id="remember-me" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
               <label htmlFor="remember-me">Remember me</label>
             </div>
-            {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-            <a href="./user.html" className="sign-in-button">
+            <button type="submit" className="sign-in-button">
               Sign In
-            </a>
-            {/* <!-- SHOULD BE THE BUTTON BELOW -->
-            <!-- <button className="sign-in-button">Sign In</button> --> */}
+            </button>
           </form>
         </section>
       </main>
